@@ -6,10 +6,9 @@
     <!-- load the controllers -->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen"  args="diff_vel_controller
-                           joint_state_controller
-                           rear_caster_swivel_controller
-		                   rear_caster_wheel_controller
-		                   --shutdown-timeout 0.5" />
+				                       rear_caster_swivel_controller
+				                       rear_caster_wheel_controller
+				                       --shutdown-timeout 0.5" />
     
     <node name="cmd_relay" pkg="topic_tools" type="relay" args="segway/cmd_vel diff_vel_controller/cmd_vel "/>
     <node name="feedback_relay" pkg="topic_tools" type="relay" args="diff_vel_controller/odom segway/feedback/wheel_odometry "/>
@@ -59,10 +58,8 @@
             <remap from="scan" to="/segway/scan"/>
             <param name="min_height" value="0.0"/>
             <param name="max_height" value="1.0"/>
-            <param name="range_min" value="0.1" />
-            <param name="range_max" value="10.0" />
-            <!-- param name="angle_min" value="-1.05" / -->
-            <!-- param name="angle_max" value="1.05" / -->
+            <param name="range_min" value="0.9" />
+            <param name="range_max" value="100.0" />
             <param name="concurrency_level" value="0" />
             <param name="use_inf" value="false" />
         </node>

@@ -4,7 +4,9 @@
     <arg name="robot_name" default="$(optenv SEGWAY_PLATFORM_NAME RMP_210)"/>
     
     <!-- Load the Robot Description-->
-    <include file="$(find segway_description)/launch/description.launch"/>
+    <include file="$(find segway_description)/launch/description.launch">
+       <arg name="publish_joint_states" value="false" />
+    </include>
 
     <!-- Include poincloud_to_laserscan if simulated Kinect is attached -->
     <group if="$(optenv SEGWAY_HAS_KINECT false)">
@@ -39,7 +41,7 @@
   <node name="spawn_segway_model" pkg="gazebo_ros" type="spawn_model"
     args="-urdf -model segway_robot -param robot_description"/>
     
-    <!-- Launch Segway sim ros_control -->
-    <include file="$(find segway_sim_control)/launch/$(arg robot_name)_control.launch"/>
+  <!-- Launch Segway sim ros_control -->
+  <include file="$(find segway_sim_control)/launch/$(arg robot_name)_control.launch"/>
 
 </launch>

@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find segway_gazebo)/launch/segway_empty_world.launch">
+    <arg name="world_name" value="worlds/willowgarage.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+  </include>
+</launch>
